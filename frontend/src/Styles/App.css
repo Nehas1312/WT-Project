@@ -1,0 +1,66 @@
+/* App.css */
+
+/* Body styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Main container styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navbar container styles */
+.navbar {
+  background-color: #e1757548; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Navbar brand styles */
+.navbar-brand {
+  color: #333333; /* Dark grey text color */
+  font-weight: bold;
+}
+
+/* Navbar toggler icon styles */
+.navbar-toggler-icon {
+  color: #333333; /* Dark grey color */
+}
+
+/* Navbar links styles */
+.navbar-nav .nav-link {
+  color: #333333; /* Dark grey text color */
+  margin-right: 20px; /* Adjust spacing between links */
+}
+
+/* Active link styles */
+.navbar-nav .nav-item.active .nav-link {
+  color: #007bff; /* Blue text color for active link */
+}
+
+/* Hover color for links */
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Blue text color on hover */
+}
+
+/* Dropdown menu background styles */
+.dropdown-menu {
+  background-color: #ffffff; /* White background */
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Dropdown menu link styles */
+.dropdown-menu .dropdown-item {
+  color: #333333; /* Dark grey text color */
+}
+
+/* Dropdown menu link hover styles */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f8f9fa; /* Light grey background on hover */
+  color: #007bff; /* Blue text color on hover */
+}

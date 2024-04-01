@@ -1,0 +1,117 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+  background: black;
+}
+
+.home-content {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: -30px;
+  color: rgb(146, 136, 136); /* Set text color to black */
+}
+
+.task-table {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.table-header {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  background-color: white; /* Set header background color to white */
+}
+
+.header-item, .row-item {
+  flex: 1;
+  padding: 20px;
+  color: black; /* Set text color to black */
+}
+
+.table-row {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ddd;
+}
+
+.row-item {
+  flex: 1;
+  padding: 20px;
+  color: black; /* Set text color to black */
+}
+
+.task-list {
+  border-collapse: collapse;
+  width: 245%;
+  margin-top: 50px;
+  margin-left: -41.5%; 
+  background-color: white; /* Set table background color to white */
+
+}
+
+.task-list th,
+.task-list td {
+  border: 1px solid #dddddd;
+  padding: 12px;
+  text-align: left;
+  color: black; /* Set text color to black */
+}
+
+.task-list th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.task-list tr:nth-child(even) {
+  background-color:  white;
+}
+
+.task-list tr:hover {
+  background-color: #b0e4f6;
+}
+
+.task-name {
+  font-size: 20px; /* Increase task font size */
+  padding: 40px; /* Increase padding for task cells */
+  width: 50%;
+}
+
+.task-date {
+  width: 15%;
+  font-size: 20px; /* Decrease date font size */
+  padding: 16px; /* Decrease padding for date cells */
+}
+
+
+.submission button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-sizing: border-box; /* Ensures padding is included in the button size */
+  overflow: hidden; /* Hides any text overflow */
+  white-space: nowrap; /* Prevents text from wrapping */
+
+}
+
+.submission button:hover {
+  background-color:#45a049;
+}
+.full-height {
+  background-color: black;
+  height: 100vh; /* Set the height of the container to 100% of the viewport height */
+  display: flex;
+  flex-direction:column;
+}

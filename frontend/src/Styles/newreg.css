@@ -1,0 +1,95 @@
+.new-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+  color: white;
+}
+
+.new-content {
+  text-align: center;
+}
+
+.new-content input[type="text"]{
+   /* Adjust background, border, and box-shadow for visual appeal */
+   background-color: #f2eded; /* Light gray */
+   border: 1px solid #ccc; /* Light gray border */
+   border-radius: 5px; /* Rounded corners */
+   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+   
+   /* Padding and font size for text input */
+   padding: 10px; /* Adequate padding */
+   font-size: 16px; /* Comfortable font size */
+   width: 100%; /* Adjust the width as needed */
+ 
+   /* Additional styles for focus state */
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.new-content input[type="date"] {
+ 
+   /* Set width to 100% for responsiveness */
+  margin-left: 10px; /* Add space between text and date input */
+  padding: 10px; /* Adjust padding as needed */
+  font-size: 16px; /* Match text input font size */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.new-content input[type="text"]:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+.new-contentt button {
+  padding: 6px 20px; /* Reduce padding for smaller screens */
+  font-size: 15px;
+  margin-top: 10px; /* Add margin-top for better spacing */
+  cursor: pointer;
+}
+.new-contentt button:hover {
+  background-color: #45def9;
+}
+
+.new-content p {
+  font-size: 18px;
+  margin-bottom: 20px; /* Reduce margin for smaller screens */
+}
+
+.new-content h2 {
+  margin-bottom: 10px;
+}
+
+.new-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.due-date-message {
+  position: absolute;
+  margin-top: -75px;
+  margin-left: 720px;
+  font-size: 12px;
+  color: #888;
+}
+
+@media screen and (min-width: 768px) {
+  .new-content input[type="text"]{
+    width: 700px;
+  }
+  .new-content input[type="date"] {
+    width: 120px; /* Set width to 700px for larger screens */
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .new-content input[type="text"]
+  {
+    width: calc(100% - 60%)
+  }
+  .new-content input[type="date"] {
+    width: calc(100% - 80%); /* Set width to 100% - 20px for smaller screens */
+}
+}
