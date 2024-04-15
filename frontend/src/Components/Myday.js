@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../Styles/home.css";
+// import "../Styles/home.css";
+import "../Styles/myday.css";
 import services from "../Services/dataServices";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -83,22 +84,32 @@ const Myday = () => {
   };
 
   return (
-    <Container className="home-container ">
-      <div className="home-content">
-        <h1>MY DAY</h1>
+    <div className="days">
+      <Container className="home-container  ">
+        {/* <h1 className="text-center mb-4">ALL TASKS</h1> */}
+        <h1
+          className="text-right mb-4"
+          style={{ color: "white", marginLeft: "210px" }}
+        >
+          MY DAY
+        </h1>
+
+        {/* <Table className="task-list" striped bordered hover> */}
+        <br></br>
         <Table
           className="task-list"
           striped
           bordered
           hover
-          style={{ marginLeft: "-100px", marginTop: "60px" }}
+          style={{ marginLeft: "-150px", marginTop: "80px" }}
         >
           <thead>
             <tr>
               <th>Tasks</th>
               <th>Due-Date</th>
               <th>Submissions</th>
-              <th>Delete</th>
+              <th>Delete</th>{" "}
+              {/* Add a new table header for the delete button */}
             </tr>
           </thead>
           <tbody>
@@ -111,7 +122,7 @@ const Myday = () => {
               .map((task) => {
                 const date = new Date(task.date);
                 const formattedDate = date.toLocaleDateString();
-                const truncatedTaskName = task.tname.slice(0, 20);
+                const truncatedTaskName = task.tname;
 
                 return (
                   <tr key={task.id} className="task-item">
@@ -149,8 +160,8 @@ const Myday = () => {
               })}
           </tbody>
         </Table>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 };
 

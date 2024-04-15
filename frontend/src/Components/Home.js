@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+
 import services from "../Services/dataServices";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Table, Button, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faTrash } from "@fortawesome/free-solid-svg-icons";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../Styles/myday.css";
 
 const Home = () => {
   const [taskdata, setTaskData] = useState([]);
@@ -80,68 +83,81 @@ const Home = () => {
   };
 
   return (
-    <Container className="home-container " fluid>
-      <h1 className="text-center mb-4" style={{ color: "white" }}>
-        ALL TASKS
-      </h1>
-      <Table
-        className="task-list"
-        striped
-        bordered
-        hover
-        style={{ marginLeft: "-100px", marginTop: "60px" }}
-      >
-        <thead>
-          <tr>
-            <th>Tasks</th>
-            <th>Due-Date</th>
-            <th>Submissions</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {taskdata.map((task) => {
-            const date = new Date(task.date);
-            const formattedDate = date.toLocaleDateString();
-            const truncatedTaskName = task.tname.slice(0, 20);
+    <div className="days">
+      <Container className="home-container  ">
+        {/* <h1 className="text-center mb-4">ALL TASKS</h1> */}
+        <h1
+          className="text-center mb-auto"
+          style={{ color: "white", marginLeft: "210px" }}
+        >
+          ALL TASKS
+        </h1>
 
-            return (
-              <tr key={task.id} className="task-item">
-                <td className="task-name">{truncatedTaskName}</td>
-                <td className="task-date">{formattedDate}</td>
-                <td className="submission">
-                  <Button
-                    variant="primary"
-                    onClick={() => handleSubmission(task.id)}
-                    disabled={task.taccomplished}
-                  >
-                    {isTaskLoading(task.id) ? (
-                      <>
-                        <span>+10&nbsp;P</span>
-                        <Spinner animation="border" size="sm" />
-                        <span>&nbsp;INTS</span>
-                      </>
-                    ) : task.taccomplished ? (
-                      "Completed"
-                    ) : (
-                      "Mark as Submitted"
-                    )}
-                  </Button>
-                </td>
-                <td className="delete">
-                  <Button
-                    variant="danger"
-                    onClick={() => handleDelete(task.id)}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </Container>
+        {/* <Table className="task-list" striped bordered hover> */}
+        <br></br>
+        <Table
+          className="task-list"
+          striped
+          bordered
+          hover
+          style={{ marginLeft: "-210px", marginTop: "80px" }}
+        >
+          <thead>
+            <tr>
+              <th>Tasks</th>
+              <th>Due-Date</th>
+              <th>Submissions</th>
+              <th>Delete</th>{" "}
+              {/* Add a new table header for the delete button */}
+            </tr>
+          </thead>
+          <tbody>
+            {taskdata.map((task) => {
+              const date = new Date(task.date);
+              const formattedDate = date.toLocaleDateString();
+              const truncatedTaskName = task.tname; // Take only the first 20 characters of the task name
+
+              return (
+                <tr key={task.id} className="task-item">
+                  <td className="task-name">{truncatedTaskName}</td>
+                  <td className="task-date">{formattedDate}</td>
+                  <td className="submission">
+                    <Button
+                      variant="primary"
+                      onClick={() => handleSubmission(task.id)}
+                      disabled={task.taccomplished}
+                    >
+                      {isTaskLoading(task.id) ? (
+                        <>
+                          <span>+10&nbsp;P</span>
+                          <Spinner animation="border" size="sm" />
+                          <span>&nbsp;INTS</span>
+                        </>
+                      ) : task.taccomplished ? (
+                        "Completed"
+                      ) : (
+                        "Mark as Submitted"
+                      )}
+                    </Button>
+                  </td>
+                  <td className="delete">
+                    {" "}
+                    {/* Add a new table cell for the delete button */}
+                    <Button
+                      variant="danger"
+                      onClick={() => handleDelete(task.id)}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />{" "}
+                      {/* Add the delete icon */}
+                    </Button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      </Container>
+    </div>
   );
 };
 

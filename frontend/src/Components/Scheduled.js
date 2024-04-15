@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../Styles/home.css";
+// import "../Styles/home.css";
+import "../Styles/myday.css";
 import services from "../Services/dataServices";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,7 +23,7 @@ const Scheduled = () => {
         setTaskData(response);
       })
       .catch((err) => {
-        console.log(`Error while fetching data from DB :${err}`);
+        console.log("Error while fetching data from DB :${err}");
       });
   }, []);
 
@@ -83,76 +84,84 @@ const Scheduled = () => {
   };
 
   return (
-    <div className="full-height">
-      <Container className="home-container">
-        <div className="home-content">
-          <h1>SCHEDULED TASKS</h1>
-          <Table
-            className="task-list"
-            striped
-            bordered
-            hover
-            style={{ marginLeft: "-100px", marginTop: "60px" }}
-          >
-            <thead>
-              <tr>
-                <th>Tasks</th>
-                <th>Due-Date</th>
-                <th>Submissions</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {taskdata
-                .filter(
-                  (task) =>
-                    !(
-                      new Date(task.date).setHours(0, 0, 0, 0) ===
-                      currentDate.getTime()
-                    )
-                )
-                .map((task) => {
-                  const date = new Date(task.date);
-                  const formattedDate = date.toLocaleDateString();
-                  const truncatedTaskName = task.tname.slice(0, 20);
+    <div className="days">
+      <Container className="home-container  ">
+        {/* <h1 className="text-center mb-4">ALL TASKS</h1> */}
+        <h1
+          className="text-center mb-auto"
+          style={{ color: "white", marginLeft: "210px" }}
+        >
+          SCHEDULED TASKS
+        </h1>
 
-                  return (
-                    <tr key={task.id} className="task-item">
-                      <td className="task-name">{truncatedTaskName}</td>
-                      <td className="task-date">{formattedDate}</td>
-                      <td className="submission">
-                        <Button
-                          variant="primary"
-                          onClick={() => handleSubmission(task.id)}
-                          disabled={task.taccomplished}
-                        >
-                          {isTaskLoading(task.id) ? (
-                            <>
-                              <span>+10 P</span>
-                              <FontAwesomeIcon icon={faClock} spin />
-                              <span>INTS</span>
-                            </>
-                          ) : task.taccomplished ? (
-                            "Completed"
-                          ) : (
-                            "Mark as Submitted"
-                          )}
-                        </Button>
-                      </td>
-                      <td className="delete">
-                        <Button
-                          variant="danger"
-                          onClick={() => handleDelete(task.id)}
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                        </Button>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </Table>
-        </div>
+        {/* <Table className="task-list" striped bordered hover> */}
+        <br></br>
+        <Table
+          className="task-list"
+          striped
+          bordered
+          hover
+          style={{ marginLeft: "-350px", marginTop: "80px" }}
+        >
+          <thead>
+            <tr>
+              <th>Tasks</th>
+              <th>Due-Date</th>
+              <th>Submissions</th>
+              <th>Delete</th>{" "}
+              {/* Add a new table header for the delete button */}
+            </tr>
+          </thead>
+          <tbody>
+            {taskdata
+              .filter(
+                (task) =>
+                  !(
+                    new Date(task.date).setHours(0, 0, 0, 0) ===
+                    currentDate.getTime()
+                  )
+              )
+              .map((task) => {
+                const date = new Date(task.date);
+                const formattedDate = date.toLocaleDateString();
+                const truncatedTaskName = task.tname;
+
+                return (
+                  <tr key={task.id} className="task-item">
+                    <td className="task-name">{truncatedTaskName}</td>
+                    <td className="task-date">{formattedDate}</td>
+                    <td className="submission">
+                      <Button
+                        variant="primary"
+                        onClick={() => handleSubmission(task.id)}
+                        disabled={task.taccomplished}
+                      >
+                        {isTaskLoading(task.id) ? (
+                          <>
+                            <span>+10 P</span>
+                            <FontAwesomeIcon icon={faClock} spin />
+                            <span>INTS</span>
+                          </>
+                        ) : task.taccomplished ? (
+                          "Completed"
+                        ) : (
+                          "Mark as Submitted"
+                        )}
+                      </Button>
+                    </td>
+                    <td className="delete">
+                      <Button
+                        variant="danger"
+                        onClick={() => handleDelete(task.id)}
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
       </Container>
     </div>
   );

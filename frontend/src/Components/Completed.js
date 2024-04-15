@@ -50,7 +50,7 @@ const Completed = () => {
   return (
     <Container className="home-container ">
       <div className="home-content">
-        <h1>MY DAY</h1>
+        <h1>Completed</h1>
         <Table
           className="task-list"
           striped
